@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da239eba12c1fe14cb4461ee39b0c137, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  businesses:
+  - name: "\u0411\u0438\u0437\u043D\u0435\u0441 1  "
+    delay: 3
+    cost: 3
+    income: 3
+    upgrades:
+    - name: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 1"
+      cost: 50
+      incomeMultiplier: 0.5
+    - name: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 2"
+      cost: 400
+      incomeMultiplier: 1
+  - name: "\u0411\u0438\u0437\u043D\u0435\u0441 2 "
+    delay: 6
+    cost: 40
+    income: 40
+    upgrades:
+    - name: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 1"
+      cost: 1200
+      incomeMultiplier: 1
+    - name: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 2"
+      cost: 4000
+      incomeMultiplier: 2
+  - name: "\u0411\u0438\u0437\u043D\u0435\u0441 3"
+    delay: 10
+    cost: 200
+    income: 200
+    upgrades:
+    - name: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 1"
+      cost: 6000
+      incomeMultiplier: 1
+    - name: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 2"
+      cost: 20000
+      incomeMultiplier: 1.5
+  - name: "\u0411\u0438\u0437\u043D\u0435\u0441 4"
+    delay: 17
+    cost: 1000
+    income: 1000
+    upgrades:
+    - name: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 1"
+      cost: 15000
+      incomeMultiplier: 1
+    - name: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 2"
+      cost: 50000
+      incomeMultiplier: 2
+  - name: "\u0411\u0438\u0437\u043D\u0435\u0441 5"
+    delay: 30
+    cost: 5000
+    income: 5000
+    upgrades:
+    - name: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 1"
+      cost: 100000
+      incomeMultiplier: 2
+    - name: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 2"
+      cost: 500000
+      incomeMultiplier: 4
