@@ -45,7 +45,7 @@ public class BusinnesUI : MonoBehaviour
     private void UpdateUI(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
         level.text = "LVL\n" + _businnes.Level;
-        income.text = "Доход\n" + _businnes.Incom;
+        income.text = "Доход\n" + _businnes.Income;
         levelUpButtonText.text = "LVL UP\nЦена " + _businnes.UpdateCost + "$";
         if(_businnes.UpgradeStatus[0])
         {
@@ -72,11 +72,11 @@ public class BusinnesUI : MonoBehaviour
 
     public void Upgrade1() 
     {
-        _session.UpgradeBuisnes(_businnes, 0);    
+        _session.UpgradeBusiness(_businnes, 0);    
     }
 
     public void Upgrade2() 
     {
-        _session.UpgradeBuisnes(_businnes, 1);
+        _session.UpgradeBusiness(_businnes, 1);
     }
 }

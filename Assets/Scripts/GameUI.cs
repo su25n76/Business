@@ -3,11 +3,15 @@ using UnityEngine;
 
 public class GameUI : MonoBehaviour
 {
-    public Manager manager;
-    public Transform businnesParent;
-    public GameObject businnesPrefab;
+    [SerializeField]
+    private Manager manager;
+    [SerializeField]
+    private Transform businnesParent;
+    [SerializeField]
+    private GameObject businnesPrefab;
 
-    public TMP_Text money;
+    [SerializeField]
+    private TMP_Text money;
 
     void Start()
     {

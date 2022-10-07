@@ -6,13 +6,13 @@ using UnityEngine;
 public class SaveSystem
 {
     public static GameDate Date = new GameDate();
-    public static LoadManager Manager = new LoadManager();
+    //public static LoadManager Manager = new LoadManager();
     private static Dictionary<string, string> SaveBusinness = new Dictionary<string, string>();
 
     public static void Save()
     {
-        Date.SaveBusinessesDate.Clear();
-        Manager.SaveStartEvent.Invoke();
+        //Date.SaveBusinessesDate.Clear();
+        //Manager.SaveStartEvent.Invoke();
         PlayerPrefs.SetString("Save", JsonUtility.ToJson(Date, false));
         Debug.Log("****** SAVE  ******* = " + JsonUtility.ToJson(Date, true));
     }
@@ -24,8 +24,8 @@ public class SaveSystem
         {
             SaveBusinness.Add(business.Id, business.Date);
         }
-        Manager.LoadSaveEvent.Invoke();
-        SaveBusinness.Clear();
+        //Manager.LoadSaveEvent.Invoke();
+        //SaveBusinness.Clear();
         Debug.Log("****** LOAD  ******* = " + JsonUtility.ToJson(Date, true));
     }
 
@@ -44,12 +44,14 @@ public class SaveSystem
 
     public static void Clear()
     {
-        Date = new GameDate();
-        Manager.Clear();
+        Date.SaveBusinessesDate.Clear();
+        SaveBusinness.Clear();
+        //Date = new GameDate();
+        //Manager.Clear();
     }
 }
 
-public class LoadManager
+/*public class LoadManager
 {
     public Action SaveStartEvent;
     public Action LoadSaveEvent;
@@ -59,7 +61,7 @@ public class LoadManager
         SaveStartEvent = null;
         LoadSaveEvent = null;
     }
-}
+}*/
 
 [Serializable]
 public class GameDate

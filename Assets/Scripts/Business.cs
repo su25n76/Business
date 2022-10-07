@@ -14,7 +14,11 @@ public class Business : INotifyPropertyChanged
     public event PropertyChangedEventHandler PropertyChanged;
 
     public string Name => _settings.name;
-    public float PayProgress => _payTime / _settings.delay;
+    public float PayProgress
+    {
+        get { return _payTime / _settings.delay; }
+        set { _payTime = value * _settings.delay; }
+    }
     public int Level
     {
         get { return _level; }
@@ -28,7 +32,7 @@ public class Business : INotifyPropertyChanged
         }
     }
 
-    public float Incom
+    public float Income
     {
         get 
         { 
@@ -49,15 +53,17 @@ public class Business : INotifyPropertyChanged
         }
     }
 
-    public bool[] UpgradeStatus => _upgradeStatus; 
+    public bool[] UpgradeStatus 
+    {
+        get { return _upgradeStatus; }
+        set { _upgradeStatus = value; }
+    } 
     public List<GameSettings.BusinessUpgrade> UpgradeList => _settings.upgrades;
 
     public Business(GameSettings.BusinessSettings settings) 
     {
         _settings = settings;
         _upgradeStatus = new bool[settings.upgrades.Count];
-        SaveSystem.Manager.SaveStartEvent += Save;
-        SaveSystem.Manager.LoadSaveEvent += Load;
     }
 
     private void OnPropertyChanged(string propertyName)
@@ -65,7 +71,7 @@ public class Business : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    public float Update(float deltaTime)
+    public float GetIncomeByTime(float deltaTime)
     {
         if (_level != 0)
         {
@@ -73,11 +79,7 @@ public class Business : INotifyPropertyChanged
             if (_payTime > _settings.delay)
             {
                 _payTime -= _settings.delay;
-                return Incom;
-            }
-            else
-            {
-                return 0;
+                return Income;
             }
         }
         return 0;
@@ -88,40 +90,23 @@ public class Business : INotifyPropertyChanged
         Level++;
     }
 
-    public void UpgradeBuisnes(int index)
+    public void UpgradeBusiness(int index)
     {
         _upgradeStatus[index] = true;
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("UpgradeStatus"));
     }
-
-    public void Save()
-    {
-        BuisnesSave Date = new BuisnesSave(Level, UpgradeStatus, _payTime);
-        SaveSystem.SaveObject(Name, JsonUtility.ToJson(Date, false));
-    }
-
-    public void Load()
-    {
-        BuisnesSave Date = JsonUtility.FromJson<BuisnesSave>(SaveSystem.GetObject(Name));
-        if (Date != null)
-        {
-            _upgradeStatus = Date.UpgradeStatus;
-            _payTime = Date.PayTime;
-            Level = Date.Level;
-        }
-    }
 }
 
-public class BuisnesSave
+public class BusinessSave
 {
     public int Level;
     public bool[] UpgradeStatus;
-    public float PayTime;
+    public float PayProgress;
 
-    public BuisnesSave(int level, bool[] upgradeStatus, float payTime)
+    public BusinessSave(int level, bool[] upgradeStatus, float payProgress)
     {
         Level = level;
         UpgradeStatus = upgradeStatus;
-        PayTime = payTime;
+        PayProgress = payProgress;
     }
 }

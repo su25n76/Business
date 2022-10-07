@@ -29,7 +29,7 @@ public class Session
     { 
         foreach(Business business in _businesses) 
         {
-            _money += business.Update(deltaTime);
+            _money += business.GetIncomeByTime(deltaTime);
         }
     }
 
@@ -42,12 +42,12 @@ public class Session
         }    
     }
 
-    public void UpgradeBuisnes(Business business,int index) 
+    public void UpgradeBusiness(Business business,int index) 
     { 
         if (business.Level>0 && !business.UpgradeStatus[index] && business.UpgradeList[index].cost <= Money) 
         {
             _money -= business.UpgradeList[index].cost;
-            business.UpgradeBuisnes(index);
+            business.UpgradeBusiness(index);
         }
     }
 }
